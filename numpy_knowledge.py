@@ -69,3 +69,92 @@ print('前两行第2列元素：', b[:2, 2])  # [0.80074457 0.69232262]
 # 数组的基础运算
 print('-' * 20, '数组的基础运算', '-' * 20)
 
+a = np.arange(4)
+b = np.array([5, 10, 15, 20])
+
+print('b - a: ', b - a)  # [ 5  9 13 17]
+print('b ** 2: ', b ** 2)  # [ 25 100 225 400]
+print('np.sin(a): ', np.sin(a))  # [0.         0.84147098 0.90929743 0.14112001]
+print('b < 20: ', b < 20)  # [ True  True  True False]
+print('np.mean(b): ', np.mean(b))  # 12.5
+print('np.var(b): ', np.var(b))  # 31.25
+
+print('-' * 20, '数组的线性代数运算', '-' * 20)
+A = np.array([[1, 1], [0, 1]])
+B = np.array([[2, 0], [3, 4]])
+
+print('A * B: ', A * B)  # [[2 0] [0 4]]
+print('A.dot(B): ', A.dot(B))  # [[5 4] [3 4]]
+print('np.linalg.inv(A): ', np.linalg.inv(A))  # [[ 1. -1.] [ 0.  1.]]
+print('np.linalg.det(A): ', np.linalg.det(A))  # 1.0
+
+print('-' * 20, '数组维度变换', '-' * 20)
+a = np.floor(10 * np.random.random((3, 4)))
+print('a: \n', a)
+'''
+ [[0. 1. 8. 0.]
+ [4. 9. 5. 6.]
+ [3. 6. 8. 0.]]
+'''
+print('a.shape: ', a.shape)  # (3, 4)
+print('a.ravel(): ', a.ravel())  # [0. 1. 8. 0. 4. 9. 5. 6. 3. 6. 8. 0.]
+print('a.reshape(2,6): \n', a.reshape(2, 6))
+'''
+[[0. 1. 8. 0. 4. 9.]
+ [5. 6. 3. 6. 8. 0.]]
+'''
+print('a.T: \n', a.T)
+'''
+ [[0. 4. 3.]
+ [1. 9. 6.]
+ [8. 5. 8.]
+ [0. 6. 0.]]
+'''
+print('a.T.shape: ', a.T.shape)  # (4, 3)
+print('a.reshape(3, -1): \n', a.reshape(3, -1))
+'''
+ [[0. 1. 8. 0.]
+ [4. 9. 5. 6.]
+ [3. 6. 8. 0.]]
+'''
+
+print('-' * 20, '数组的合并与切分', '-' * 20)
+
+print('np.hstack(A, B): \n', np.hstack((A, B)))
+'''
+[[1 1 2 0]
+ [0 1 3 4]]
+'''
+print('np.vstack(A, B): \n', np.vstack((A, B)))
+'''
+ [[1 1]
+ [0 1]
+ [2 0]
+ [3 4]]
+'''
+
+C = np.arange(16.).reshape(4, 4)
+print('np.arange(16.).reshape(4, 4) C: \n', C)
+'''
+ [[ 0.  1.  2.  3.]
+ [ 4.  5.  6.  7.]
+ [ 8.  9. 10. 11.]
+ [12. 13. 14. 15.]]
+'''
+
+print('np.hsplit(C, 2): \n', np.hsplit(C, 2))
+'''
+[array([[ 0.,  1.],
+       [ 4.,  5.],
+       [ 8.,  9.],
+       [12., 13.]]), array([[ 2.,  3.],
+       [ 6.,  7.],
+       [10., 11.],
+       [14., 15.]])]
+'''
+print('np.vsplit(C, 2): \n', np.vsplit(C, 2))
+'''
+ [array([[0., 1., 2., 3.],
+       [4., 5., 6., 7.]]), array([[ 8.,  9., 10., 11.],
+       [12., 13., 14., 15.]])]
+'''
